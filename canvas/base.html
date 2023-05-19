@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div class="operate">
+        <button>line</button>
+        <button>rect</button>
+        <button>arc</button>
+        <button>bezi</button>
+        <button>text</button>
+        <button>pic</button>
+        <button>pic-sl</button>
+      </div>
+      <canvas width="600" height="600" id="canvas"></canvas>
+    </div>
+    <script src="./index.js"></script>
+    <script>
+      var buttonList = document.getElementsByTagName("button");
+      var canvasObj = document.getElementById("canvas").getContext("2d");
+      for (let i = 0; i < buttonList.length; i++) {
+        buttonList[i].onclick = () => {
+          drawLine(canvasObj, buttonList[i].innerText)
+        }
+      }
+    </script>
+    <style>
+      .operate {
+        width: 400px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      button {
+        cursor: pointer;
+      }
+      button + button {
+        margin-left: 10px;
+      }
+      canvas {
+        border: 1px solid #ccc;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </body>
+</html>
