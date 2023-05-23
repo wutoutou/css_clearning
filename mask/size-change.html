@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>通过控制蒙版图片的大小比例实现切换</title>
+  </head>
+  <body>
+    <div class="scenes">
+      <div class="scene-1"></div>
+      <div class="scene-2"></div>
+    </div>
+    <style>
+      @keyframes scene-transition {
+        50% {
+          -webkit-mask-size: 900%;
+        }
+        100% {
+          -webkit-mask-size: 1800%;
+        }
+      }
+      .scenes {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        outline: 2px solid #ccc;
+      }
+      .scene-1,
+      .scene-2 {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+      }
+      .scene-1 {
+        background-image: url(./assert/midouzi.png);
+      }
+      .scene-2 {
+        background-image: url(./assert/d.jpeg);
+        -webkit-mask-image: url(./assert/star-white.svg);
+        -webkit-mask-size: 0%;
+        -webkit-mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+      }
+      .scenes:is(:hover, :focus) .scene-2 {
+        animation: scene-transition 2s cubic-bezier(1, 0, 1, 1) forwards;
+      }
+    </style>
+  </body>
+</html>

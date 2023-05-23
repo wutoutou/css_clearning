@@ -1,0 +1,58 @@
+<!--
+ * @Author: wudan17
+ * @Date: 2023-05-22 10:43:14
+ * @LastEditTime: 2023-05-23 13:53:32
+ * @LastEditors: wudan17
+ * @Description: 
+ * @FilePath: \css_clearning\mask\index.html
+ * 可以输入预定的版权声明、个性签名、空行等
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 基本的图片遮罩 -->
+    <div class="mask"></div>
+    <style>
+      .mask {
+        width: 200px;
+        height: 100px;
+        background-image: url(./assert/midouzi.png);
+        background-size: 100% 100%;
+        /* png 图片 */
+        /* -webkit-mask-image: url(./assert/star.png); */
+        /* svg  */
+        -webkit-mask-image: url(./assert/star-white.svg);
+        /* 渐变图片 */
+        /* -webkit-mask-image: linear-gradient(transparent, red); */ 
+        -webkit-mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: cover;
+
+      }
+    </style>
+
+    <!-- <div class="mask1"></div>
+    <style>
+      .mask1 {
+        width: 200px;
+        height: 200px;
+        background-image: url(./assert/midouzi.png);
+        background-size: 100% 100%;
+        -webkit-mask-image: url(./assert/star-white.svg);
+        -webkit-mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: 100% 100%;
+        transition: all 1s;
+      }
+      .mask1:hover {
+        -webkit-mask-size: 400% 400%;
+      }
+    </style> -->
+  </body>
+</html>

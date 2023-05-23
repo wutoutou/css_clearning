@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>利用锥型渐变实现图片扇形切换</title>
+  </head>
+  <body>
+    <div class="scenes">
+      <div class="scene-1"></div>
+      <div class="scene-2"></div>
+    </div>
+    <style>
+      /* 自定义--angle属性 */
+      @property --angle {
+        syntax: "<angle>";
+        inherits: false;
+        initial-value: 0deg;
+      }
+      @property --length {
+        syntax: "<percentage>";
+        inherits: false;
+        initial-value: 0%;
+      }
+      .scenes {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        outline: 2px solid #ccc;
+        margin: 200px auto;
+      }
+      .scene-1,
+      .scene-2 {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+      }
+      .scene-1 {
+        background-image: url(./assert/midouzi.png);
+      }
+      .scene-2 {
+        background-image: url(assert/d.jpeg);
+        /* 扇形切换 */
+        /* -webkit-mask-image: conic-gradient(black var(--angle), transparent var(--angle) 360deg); */
+
+        /* 从中点的圆形/锥型渐变 */
+        -webkit-mask-image: radial-gradient(
+          black var(--length),
+          transparent var(--length)
+        );
+        
+        /* 线性切换 */
+        /* -webkit-mask-image: linear-gradient(90deg, black var(--length), transparent var(--length)); */
+        -webkit-mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+      }
+
+      .scenes:is(:hover, :focus) .scene-2 {
+        /* 锥型渐变  */
+        /* animation: conic-transition 2s linear forwards; */
+
+        /* 径向渐变 */
+        animation: radial-transition 2s linear forwards;
+
+        /* 线性变换 */
+        /* animation: linear-transition 2s linear forwards */
+      }
+      @keyframes conic-transition {
+        100% {
+          --angle: 360deg;
+        }
+      }
+      @keyframes radial-transition {
+        100% {
+          --length: 200%;
+        }
+      }
+
+      @keyframes linear-transition {
+        100% {
+          --length: 200%;
+        }
+      }
+    </style>
+  </body>
+</html>
